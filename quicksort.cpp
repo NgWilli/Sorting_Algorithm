@@ -5,21 +5,23 @@
 #include <sstream>
 #include <set>
 using namespace std;
-int partition(int r[],int i,int j)//¶ÔÇø¼ä´Óiµ½jµÄÎ»ÖÃ½øĞĞpartation
+int partition(int r[],int i,int j)//å¯¹åŒºé—´ä»iåˆ°jçš„ä½ç½®è¿›è¡Œpartation
 {
-	int pivot=r[i];//Ê¹ÓÃµÚÒ»¸öÔªËØµ±×öpivot
+	int pivot=r[i];//ä½¿ç”¨ç¬¬ä¸€ä¸ªå…ƒç´ å½“åšpivot
+	while(i<j)
+	{
 	while (j>i&&pivot<r[j])
 	{
-		j--;//ºóÃæµÄ²»¶®£¬Ö¸ÕëÏòÇ°ÒÆ¶¯
+		j--;//åé¢çš„ä¸æ‡‚ï¼ŒæŒ‡é’ˆå‘å‰ç§»åŠ¨
 	}
-	//²»Âú×ãÉÏÊöÑ­»·£¬j>i»òÕßpivot<r[j]
-	if (j>i)//½»»»
+	//ä¸æ»¡è¶³ä¸Šè¿°å¾ªç¯ï¼Œj>iæˆ–è€…pivot<r[j]
+	if (j>i)//äº¤æ¢
 	{
-		r[i]=r[j];//r[i]´æµÄÊÇÃ»ÓÃµÄĞÅÏ¢
+		r[i]=r[j];//r[i]å­˜çš„æ˜¯æ²¡ç”¨çš„ä¿¡æ¯
 		i++;
 	}
 
-	//´ËÊ±r[j]ÀïÃæµÄĞÅÏ¢ÊÇÃ»ÓÃµÄ
+	//æ­¤æ—¶r[j]é‡Œé¢çš„ä¿¡æ¯æ˜¯æ²¡ç”¨çš„
 	while (j>i&& r[i]<pivot)
 	{
 		i++;
@@ -29,7 +31,8 @@ int partition(int r[],int i,int j)//¶ÔÇø¼ä´Óiµ½jµÄÎ»ÖÃ½øĞĞpartation
 		r[j]=r[i];
 		j--;
 	}
-	//Èç¹ûµ½ÕâÀïËµÃ÷i=j,¿ÉÒÔ½«pivot¾Í¿ÉÒÔÁË
+	}
+	//å¦‚æœåˆ°è¿™é‡Œè¯´æ˜i=j,å¯ä»¥å°†pivotå°±å¯ä»¥äº†
 	r[i]=pivot;
 	return i;
 
@@ -37,7 +40,7 @@ int partition(int r[],int i,int j)//¶ÔÇø¼ä´Óiµ½jµÄÎ»ÖÃ½øĞĞpartation
 void QuickSort(int r[],int low,int high)
 {
 	int pivot;
-	if (low<high)//Èç¹ûÖ»ÓĞÒ»¸öÔªËØ£¬ÄÇÃ´Ö±½Ó·µ»Ø
+	if (low<high)//å¦‚æœåªæœ‰ä¸€ä¸ªå…ƒç´ ï¼Œé‚£ä¹ˆç›´æ¥è¿”å›
 	{
 		pivot=partition(r,low,high);
 		QuickSort(r,low,pivot-1);
